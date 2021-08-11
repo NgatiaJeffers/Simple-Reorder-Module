@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load static %}
+{% load cloudinary %}
+
+{% block content %}
+<section class="mt-5">
+    <div class="container">
+      <div class="row">
+          {% for item in item_list %}
+      <div class="col-lg-4 mb-4">
+      <div class="card">
+        <img src="{{ item.image.url }}" alt="" class="card-img-top">
+        <div class="card-body">
+          <h5 class="card-title">{{ item.name }}</h5>
+          <p class="card-text">{{ item.quantity }}</p>
+         <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+        </div>
+       </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  </section>
+{% endblock %}
