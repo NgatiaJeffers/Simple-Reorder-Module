@@ -4,5 +4,51 @@
 {% load cloudinary %}
 
 {% block content %}
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h3 class="text-center mt-2">Pending Order</h3>
+                <div class="row">
+                    {% for pending_order in pending_orders %}
+                    <div class="col-md-6">
+                        {% if pending_order %}
+                        <div class="card shadow-sm text-center mt-5">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ pending_order.name }}</h5>
+                              <p class="card-text">Get the Order Number - {{ pending_order.id }} </p>
+                              <span>Order date: {{ pending_order.date_order|date:"Y-m-d" }}</span>
+                             <a href="{% url 'dispatch' pending_order.id %}" class="btn btn-outline-success btn-sm mt-2">Dispatch Items</a>
+                            </div> 
+                        </div>
+                        {% else %}
+                        <h3 class="text-center mt-5">Oops...!!! No Orders Available. Sorry.</h3>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
 
+            <div class="col-md-6">
+                <h3 class="text-center mt-2">Dispatched Orders</h3>
+                <div class="row">
+                    {% for dispatched in dispatched_orders %}
+                    <div class="col-md-6">
+                        {% if dispatched %}
+                        <div class="card shadow-sm text-center mt-5">
+                            <div class="card-body">
+                              <h5 class="card-title">{{ dispatched.name }}</h5>
+                              <p class="card-text">Get the Order Number - {{ dispatched.id }} </p>
+                              <span>Order date: {{ dispatched.date_order|date:"Y-m-d" }}</span>                            </div> 
+                        </div>
+                        {% else %}
+                        <h3 class="text-center mt-5">Oops...!!! No Dispatched Order Available. Sorry.</h3>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

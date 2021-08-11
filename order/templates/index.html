@@ -13,8 +13,8 @@
         <img src="{{ item.image.url }}" alt="" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">{{ item.name }}</h5>
-          <p class="card-text">{{ item.quantity }}</p>
-         <a href="" class="btn btn-outline-success btn-sm">Read More</a>
+          <p class="card-text">Here is your Quantity - {{ item.quantity }}</p>
+         <a href="{% url 'selling' item.id %}" class="btn btn-outline-success btn-sm">Sell</a>
         </div>
        </div>
       </div>
