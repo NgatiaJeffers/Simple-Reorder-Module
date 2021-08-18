@@ -27,7 +27,7 @@ def order_list(request):
 
     return render(request, "order.html", context)
 
-def sell_item(request, id):
+def sell_item(request, id):   
     item = Items.objects.get(id=id)
     quantity = item.quantity
     new_quantity = quantity-1
@@ -41,7 +41,6 @@ def sell_item(request, id):
         send_order(id)
 
         return redirect("items")
-
 
     return redirect("items")
 
